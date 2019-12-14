@@ -13,15 +13,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let nc = NetworkController()
-        nc.getTracks(searchQuery: "bliss", completion: {
+        
+        NetworkController.sharedInstance.getTracks(searchQuery: "bliss", completion: {
             (fetchedTracks) in
-            for track in fetchedTracks.data{
-                print(track.title)
+            if let fetchedTracks = fetchedTracks {
+                for track in fetchedTracks.data{
+                    print(track.title)
+                    print("Album:" + track.album.title)
+                    print("Artist:" + track.artist.name)
+
+                }
             }
-            
-        })
-        print("fail")
+            })
     }
 
 

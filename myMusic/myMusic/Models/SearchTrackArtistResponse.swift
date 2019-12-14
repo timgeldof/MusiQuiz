@@ -1,5 +1,5 @@
 //
-//  SearchTrackResponse.swift
+//  SearchTrackArtistResponse.swift
 //  myMusic
 //
 //  Created by Tim Geldof on 14/12/2019.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct SearchTrackResponseWrapper: Decodable{
+struct SearchTrackArtistResponse: Decodable {
     
-    let data: [SearchTrackResponse]
+    let name: String
     
-    enum CodingKeys: String, CodingKey{
-        case data = "data"
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
     }
     
     init(from decoder: Decoder) throws {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
-        self.data = try valueContainer.decode([SearchTrackResponse].self, forKey: CodingKeys.data)
+        self.name = try valueContainer.decode(String.self, forKey: CodingKeys.name)
     }
 }

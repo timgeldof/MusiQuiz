@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+
 extension URL {
     func withQueries(_ queries: [String: String]) -> URL? {
         var components = URLComponents(url: self, resolvingAgainstBaseURL: true)
@@ -17,18 +19,24 @@ extension URL {
 }
 
 class NetworkController{
+    // SOURCE: What is a singleton and how to create one in swift
+    static let sharedInstance = NetworkController()
     
     let BASE_URL: String = "https://api.deezer.com/"
     
-    func getTracks(searchQuery: String, completion: @escaping (SearchTrackResponseWrapper) -> Void){
+    func getTracks(searchQuery: String, completion: @escaping (SearchTrackResponseWrapper?) -> Void){
         let BASE_URL: String = "https://api.deezer.com/"
         let searchURL = URL(string: BASE_URL + "search/track")
         let s = searchURL?.withQueries(["q":searchQuery])
 
         let task = URLSession.shared.dataTask(with: s!){
             (data, error, response) in
-            if let data = data, let resp =  try? JSONDecoder().decode(SearchTrackResponseWrapper.self, from: data){
+            if let data = data,
+               let resp =  try? JSONDecoder().decode(SearchTrackResponseWrapper.self, from: data){
                 completion(resp)
+            } else {
+                print("An error occurred")
+                completion(nil)
             }
         }
         task.resume()

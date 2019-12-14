@@ -17,6 +17,8 @@
 		C28D60A023A542BA00005142 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28D609F23A542BA00005142 /* NetworkController.swift */; };
 		C28D60A623A54DCC00005142 /* SearchTrackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28D60A223A5472400005142 /* SearchTrackResponse.swift */; };
 		C28D60A723A54DD000005142 /* SearchTrackResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28D60A423A54C7400005142 /* SearchTrackResponseWrapper.swift */; };
+		C28D60AC23A595FA00005142 /* SearchTrackArtistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28D60AB23A595FA00005142 /* SearchTrackArtistResponse.swift */; };
+		C28D60AE23A5971200005142 /* SearchTrackAlbumResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28D60AD23A5971200005142 /* SearchTrackAlbumResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		C28D609F23A542BA00005142 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		C28D60A223A5472400005142 /* SearchTrackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackResponse.swift; sourceTree = "<group>"; };
 		C28D60A423A54C7400005142 /* SearchTrackResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackResponseWrapper.swift; sourceTree = "<group>"; };
+		C28D60AB23A595FA00005142 /* SearchTrackArtistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackArtistResponse.swift; sourceTree = "<group>"; };
+		C28D60AD23A5971200005142 /* SearchTrackAlbumResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackAlbumResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 		C28D606E23A53AD900005142 /* myMusic */ = {
 			isa = PBXGroup;
 			children = (
+				C28D60AF23A59CF400005142 /* New Group1 */,
+				C28D60AA23A5873100005142 /* New Group */,
 				C28D60A123A5452500005142 /* Models */,
 				C28D609E23A5429E00005142 /* Network */,
 				C28D606F23A53AD900005142 /* AppDelegate.swift */,
@@ -146,8 +152,24 @@
 			children = (
 				C28D60A223A5472400005142 /* SearchTrackResponse.swift */,
 				C28D60A423A54C7400005142 /* SearchTrackResponseWrapper.swift */,
+				C28D60AB23A595FA00005142 /* SearchTrackArtistResponse.swift */,
+				C28D60AD23A5971200005142 /* SearchTrackAlbumResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C28D60AA23A5873100005142 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		C28D60AF23A59CF400005142 /* New Group1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group1";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +308,8 @@
 				C28D607223A53AD900005142 /* ViewController.swift in Sources */,
 				C28D607023A53AD900005142 /* AppDelegate.swift in Sources */,
 				C28D60A023A542BA00005142 /* NetworkController.swift in Sources */,
+				C28D60AC23A595FA00005142 /* SearchTrackArtistResponse.swift in Sources */,
+				C28D60AE23A5971200005142 /* SearchTrackAlbumResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
