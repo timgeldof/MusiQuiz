@@ -13,7 +13,10 @@ class TrackTableViewCell: UITableViewCell {
 
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var songTitleLabel: UILabel!
+
     @IBOutlet weak var artistLabel: UILabel!
+    
+    @IBOutlet weak var durationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +34,8 @@ class TrackTableViewCell: UITableViewCell {
         let downloadURL: URL = URL(string: track.album.cover_small)!
 
         self.albumImage.kf.setImage(with: downloadURL)
+        self.durationLabel.text = track.durationToMinuteString()
     }
+    
 
 }

@@ -77,22 +77,28 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bmf-IF-602">
-                                                            <rect key="frame" x="65" y="0.0" width="269" height="65"/>
+                                                            <rect key="frame" x="65" y="0.0" width="233.5" height="65"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2M-UN-P2j">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="269" height="44.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="233.5" height="44.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PB3-w8-UTp">
-                                                                    <rect key="frame" x="0.0" y="44.5" width="269" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="44.5" width="233.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="2:34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Px-wf-0O2">
+                                                            <rect key="frame" x="298.5" y="0.0" width="35.5" height="65"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -105,7 +111,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="albumImage" destination="HpJ-cf-h9T" id="aou-Ne-JXm"/>
-                                            <outlet property="artistLabel" destination="PB3-w8-UTp" id="n5s-Rv-IZg"/>
+                                            <outlet property="artistLabel" destination="PB3-w8-UTp" id="PPy-Uf-0uw"/>
+                                            <outlet property="durationLabel" destination="8Px-wf-0O2" id="cmP-pH-BIT"/>
                                             <outlet property="songTitleLabel" destination="v2M-UN-P2j" id="Jvs-Tx-IUH"/>
                                         </connections>
                                     </tableViewCell>

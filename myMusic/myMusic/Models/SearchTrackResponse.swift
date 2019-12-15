@@ -32,4 +32,15 @@ struct SearchTrackResponse: Decodable {
         self.album = try valueContainer.decode(SearchTrackAlbumResponse.self, forKey: CodingKeys.album)
 
     }
+    func durationToMinuteString() -> String{
+        let seconds: Int = self.duration % 60
+        let minutes: Int =  Int(floor(Double(self.duration) / Double(60)))
+        if (seconds==0) {
+            return "\(minutes):00"
+        }
+        if (seconds<10) {
+            return "\(minutes):0\(seconds)"
+        }
+        return "\(minutes):\(seconds)"
+    }
 }
