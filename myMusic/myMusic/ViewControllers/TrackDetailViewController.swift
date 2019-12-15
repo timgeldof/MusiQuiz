@@ -17,8 +17,6 @@ class TrackDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         songTitleLabel.text = track?.title
-
-        // Do any additional setup after loading the view.
     }
     
 
