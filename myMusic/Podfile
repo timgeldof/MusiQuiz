@@ -6,4 +6,5 @@ target 'myMusic' do
   # your other pod
   # ...
   pod 'Kingfisher', '~> 5.0'
+  pod 'RealmSwift'
 end
