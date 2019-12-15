@@ -54,10 +54,9 @@ class SearchTrackViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TrackTableViewCell
         cell.backgroundColor = UIColor.lightGray
-        cell.textLabel?.text = self.tracks[indexPath.row].title
-        cell.detailTextLabel?.text = self.tracks[indexPath.row].artist.name
+        cell.update(with: self.tracks[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){

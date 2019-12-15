@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Kingfisher
+import Kingfisher
 
 class TrackTableViewCell: UITableViewCell {
 
@@ -22,11 +22,15 @@ class TrackTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     func update(with track: SearchTrackResponse){
-    
+        self.artistLabel.text = track.artist.name
+        self.songTitleLabel.text = track.title
+        let downloadURL: URL = URL(string: track.album.cover_small)!
+
+        self.albumImage.kf.setImage(with: downloadURL)
     }
 
 }
