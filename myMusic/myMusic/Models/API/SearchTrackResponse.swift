@@ -32,6 +32,13 @@ struct SearchTrackResponse: Decodable {
         self.album = try valueContainer.decode(SearchTrackAlbumResponse.self, forKey: CodingKeys.album)
 
     }
+    init(title: String, duration: Int, preview: String, artist: SearchTrackArtistResponse, album: SearchTrackAlbumResponse) {
+        self.title = title
+        self.duration = duration
+        self.preview = preview
+        self.artist = artist
+        self.album = album
+    }
     func durationToMinuteString() -> String{
         let seconds: Int = self.duration % 60
         let minutes: Int =  Int(floor(Double(self.duration) / Double(60)))

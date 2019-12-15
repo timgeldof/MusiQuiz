@@ -30,4 +30,7 @@ struct SearchTrackAlbumResponse: Decodable {
         self.cover_big = try valueContainer.decode(String.self, forKey: CodingKeys.cover_big)
 
     }
+    init(title: String){
+        self.title = title
+    }
 }

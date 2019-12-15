@@ -20,4 +20,7 @@ struct SearchTrackArtistResponse: Decodable {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
         self.name = try valueContainer.decode(String.self, forKey: CodingKeys.name)
     }
+    init(name: String){
+        self.name = name
+    }
 }
