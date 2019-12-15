@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C214DB7B23A6973700138869 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214DB7A23A6973700138869 /* DatabaseController.swift */; };
 		C28D607023A53AD900005142 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28D606F23A53AD900005142 /* AppDelegate.swift */; };
-		C28D607223A53AD900005142 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28D607123A53AD900005142 /* ViewController.swift */; };
 		C28D607523A53AD900005142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C28D607323A53AD900005142 /* Main.storyboard */; };
 		C28D607723A53ADA00005142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C28D607623A53ADA00005142 /* Assets.xcassets */; };
 		C28D607A23A53ADA00005142 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C28D607823A53ADA00005142 /* LaunchScreen.storyboard */; };
@@ -58,9 +58,9 @@
 /* Begin PBXFileReference section */
 		78555F35D8BCE260618D269E /* Pods-myMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myMusic.debug.xcconfig"; path = "Target Support Files/Pods-myMusic/Pods-myMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		AEB46C4E793781A20FF5D890 /* Pods_myMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C214DB7A23A6973700138869 /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		C28D606C23A53AD900005142 /* myMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C28D606F23A53AD900005142 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C28D607123A53AD900005142 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C28D607423A53AD900005142 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C28D607623A53ADA00005142 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C28D607923A53ADA00005142 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,6 +117,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C214DB7923A6972300138869 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				C214DB7A23A6973700138869 /* DatabaseController.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		C28D606323A53AD900005142 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +150,7 @@
 		C28D606E23A53AD900005142 /* myMusic */ = {
 			isa = PBXGroup;
 			children = (
+				C214DB7923A6972300138869 /* Database */,
 				C28D60AF23A59CF400005142 /* ViewControllers */,
 				C28D60AA23A5873100005142 /* Views */,
 				C28D60A123A5452500005142 /* Models */,
@@ -203,7 +212,6 @@
 		C28D60AF23A59CF400005142 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C28D607123A53AD900005142 /* ViewController.swift */,
 				C2B4698623A59E0A00DD4EBE /* SearchTrackViewController.swift */,
 				C2B4698823A59E4600DD4EBE /* TrackDetailViewController.swift */,
 				C2B4698A23A59E6800DD4EBE /* FavoriteTracksViewController.swift */,
@@ -217,7 +225,6 @@
 				78555F35D8BCE260618D269E /* Pods-myMusic.debug.xcconfig */,
 				D747E571371C1489E3AC8ADF /* Pods-myMusic.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -401,7 +408,7 @@
 				C28D60A723A54DD000005142 /* SearchTrackResponseWrapper.swift in Sources */,
 				C28D60A623A54DCC00005142 /* SearchTrackResponse.swift in Sources */,
 				C2B4698923A59E4600DD4EBE /* TrackDetailViewController.swift in Sources */,
-				C28D607223A53AD900005142 /* ViewController.swift in Sources */,
+				C214DB7B23A6973700138869 /* DatabaseController.swift in Sources */,
 				C28D607023A53AD900005142 /* AppDelegate.swift in Sources */,
 				C2B4698723A59E0A00DD4EBE /* SearchTrackViewController.swift in Sources */,
 				C28D60A023A542BA00005142 /* NetworkController.swift in Sources */,
