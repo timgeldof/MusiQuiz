@@ -9,20 +9,24 @@
 import Foundation
 import RealmSwift
 
-class TrackDatabase : Object {
+class TrackEntity : Object {
+    @objc dynamic var id: Int = 0
     @objc dynamic var title: String = ""
-    @objc dynamic var album: AlbumDatabase? = nil
+    @objc dynamic var album: AlbumEntity? = nil
     @objc dynamic var preview: String = ""
     @objc dynamic var duration: Int = 0
-    @objc dynamic var artist: ArtistDatabase? = nil
-
-
+    @objc dynamic var artist: ArtistEntity? = nil
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
     required init(){
         super.init()
     }
     
-    init(title: String, duration: Int, preview: String, artist: ArtistDatabase?, album: AlbumDatabase?) {
+    init(id:Int, title: String, duration: Int, preview: String, artist: ArtistEntity?, album: AlbumEntity?) {
+        self.id = id
         self.title = title
         self.duration = duration
         self.preview = preview
@@ -30,8 +34,13 @@ class TrackDatabase : Object {
         self.album = album
     }
     
-    // TODO: impl. method
-    static func toApiTrack(dbTrack : TrackDatabase) -> SearchTrackResponse? {
-        return nil
+    func toApiTrack() -> SearchTrackResponse {
+        return SearchTrackResponse(
+            id: self.id,
+            title: self.title,
+            duration: self.duration,
+            preview: self.preview,
+            artist: self.artist!.toApiArtist(),
+            album: self.album!.toApiAlbum())
     }
 }

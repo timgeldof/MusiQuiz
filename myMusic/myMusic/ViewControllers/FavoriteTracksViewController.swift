@@ -7,20 +7,40 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FavoriteTracksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var tracks : [SearchTrackResponse]  = []
+    private var tracks : Results<TrackEntity>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DatabaseController.sharedInstance.getAll(completion: {
+            (tracks) in
+            self.tracks = tracks
+            self.updateTable()
+        })
+    }
+    func updateTable(){
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tracks.count
+        if let tracks = tracks {
+            return tracks.count
+        } else {
+            return 0
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) ->Int {
@@ -29,24 +49,21 @@ class FavoriteTracksViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TrackTableViewCell
-        cell.backgroundColor = UIColor.lightGray
-        cell.update(with: self.tracks[indexPath.row])
+        if let tracks = tracks {
+            cell.update(with: tracks[indexPath.row].toApiTrack())
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        performSegue(withIdentifier: "showDetailSearchedTrack", sender: self)
+        performSegue(withIdentifier: "favoritesToDetail", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? TrackDetailViewController,
+            let row = tableView.indexPathForSelectedRow?.row {
+            destination.track = tracks![row].toApiTrack()
+        }
     }
-    */
 
 }

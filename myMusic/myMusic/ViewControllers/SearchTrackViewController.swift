@@ -19,6 +19,8 @@ class SearchTrackViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        self.searchQuery.addTarget(self, action: #selector(OnSearchChanged), for: .editingChanged)
+
         // Do any additional setup after loading the view.
     }
     func updateTable(tracks: [SearchTrackResponse]){
@@ -28,7 +30,8 @@ class SearchTrackViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    @IBAction func OnSearchPressed(_ sender: Any) {
+    
+    @objc func OnSearchChanged() {
         if let s = self.searchQuery.text{
             NetworkController.sharedInstance.getTracks(searchQuery: s, completion: {
                 (fetchedTracks) in
@@ -46,6 +49,11 @@ class SearchTrackViewController: UIViewController, UITableViewDelegate, UITableV
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(self.tracks.count == 0){
+            self.tableView.setEmptyView(title: "No result for search", message:"Songs matching your search will appear here")
+        } else {
+            tableView.restore()
+        }
         return self.tracks.count
     }
     

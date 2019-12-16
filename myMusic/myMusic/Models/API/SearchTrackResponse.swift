@@ -9,7 +9,7 @@
 import Foundation
 
 struct SearchTrackResponse: Decodable {
-    
+    let id: Int
     let title: String
     let duration: Int
     let preview: String
@@ -17,14 +17,17 @@ struct SearchTrackResponse: Decodable {
     let album: SearchTrackAlbumResponse
     
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case title = "title"
         case duration = "duration"
         case preview = "preview"
         case artist = "artist"
         case album = "album"
     }
+    
     init(from decoder: Decoder) throws {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try valueContainer.decode(Int.self, forKey: CodingKeys.id)
         self.title = try valueContainer.decode(String.self, forKey: CodingKeys.title)
         self.duration = try valueContainer.decode(Int.self, forKey: CodingKeys.duration)
         self.preview = try valueContainer.decode(String.self, forKey: CodingKeys.preview)
@@ -32,7 +35,8 @@ struct SearchTrackResponse: Decodable {
         self.album = try valueContainer.decode(SearchTrackAlbumResponse.self, forKey: CodingKeys.album)
 
     }
-    init(title: String, duration: Int, preview: String, artist: SearchTrackArtistResponse, album: SearchTrackAlbumResponse) {
+    init(id: Int, title: String, duration: Int, preview: String, artist: SearchTrackArtistResponse, album: SearchTrackAlbumResponse) {
+        self.id = id
         self.title = title
         self.duration = duration
         self.preview = preview
@@ -49,5 +53,15 @@ struct SearchTrackResponse: Decodable {
             return "\(minutes):0\(seconds)"
         }
         return "\(minutes):\(seconds)"
+    }
+    
+    func toTrackEntity() -> TrackEntity {
+        return TrackEntity(
+            id: self.id,
+            title: self.title,
+            duration: self.duration,
+            preview: self.preview,
+            artist: self.artist.toArtistEntity(),
+            album: self.album.toAlbumEntity())
     }
 }

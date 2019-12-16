@@ -9,18 +9,24 @@
 import Foundation
 import RealmSwift
 
-class ArtistDatabase: Object{
+class ArtistEntity: Object{
+    @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
 
     required init() {
         super.init()
     }
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
-    init(name: String){
+    init(id: Int, name: String){
+        self.id = id
         self.name = name
     }
-    static func toApiArtist(dbTrack : ArtistDatabase) -> SearchTrackArtistResponse? {
-        return nil
+    func toApiArtist() -> SearchTrackArtistResponse {
+        return
+            SearchTrackArtistResponse(id: self.id, name: self.name)
     }
     
 }

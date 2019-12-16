@@ -9,25 +9,37 @@
 import Foundation
 import RealmSwift
 
-class AlbumDatabase: Object {
+class AlbumEntity: Object {
+    @objc dynamic var id: Int = 0
     @objc dynamic var title: String = ""
     @objc dynamic var cover_small : String = ""
     @objc dynamic var cover_medium : String = ""
     @objc dynamic var cover_big : String = ""
 
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
     required init(){
         super.init()
     }
     
-    init(title: String, cover_small: String, cover_medium : String, cover_big: String){
+    init(id: Int, title: String, cover_small: String, cover_medium : String, cover_big: String){
+        self.id = id
         self.title = title
         self.cover_big = cover_big
         self.cover_medium = cover_medium
         self.cover_small = cover_small
     }
     
-    static func toApiAlbum(dbTrack : AlbumDatabase) -> SearchTrackAlbumResponse? {
-        return nil
+    func toApiAlbum() -> SearchTrackAlbumResponse {
+        return
+            SearchTrackAlbumResponse(
+                id: self.id,
+                title: self.title,
+                cover_small: self.cover_small,
+                cover_medium: self.cover_medium,
+                cover_big: self.cover_big)
     }
     
     

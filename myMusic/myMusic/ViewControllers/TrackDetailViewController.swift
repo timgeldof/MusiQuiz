@@ -42,7 +42,8 @@ class TrackDetailViewController: UIViewController {
         self.player = AVPlayer(playerItem: playerItem)
         self.player?.volume = 1
     }
-    @IBAction func onStopPressed(_ sender: Any) {
+    @IBAction func onStopPressed(_ sender: UIButton) {
+        animateButton(sender: sender)
         if let player = player {
             player.seek(to: .zero)
             playButton.setImage(#imageLiteral(resourceName: "play"), for: UIControl.State.normal)
@@ -51,7 +52,8 @@ class TrackDetailViewController: UIViewController {
             }
         }
     }
-    @IBAction func onPlayPressed(_ sender: Any) {
+    @IBAction func onPlayPressed(_ sender: UIButton) {
+        animateButton(sender: sender)
         if let player = player {
             if(!player.isPlaying){
                 player.play()
@@ -62,7 +64,30 @@ class TrackDetailViewController: UIViewController {
             }
         }
     }
-
+    
+    @IBAction func addToFavorites(_ sender: UIButton) {
+        animateButton(sender: sender)
+        DatabaseController.sharedInstance.insertTrack(track: self.track!.toTrackEntity(), completion: { (error) in
+            print(error ?? "Added to favorites")
+            })
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        if let player = player {
+            if(player.isPlaying){
+                player.pause()
+                playButton.setImage(#imageLiteral(resourceName: "play"), for: UIControl.State.normal)
+            }
+        }
+    }
+    
+    // SOURCE: https://jgreen3d.com/animate-ios-buttons-touch/
+    func animateButton(sender : UIButton){
+        UIButton.animate(withDuration: 0.2, animations: {
+            sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }, completion: { finish in UIButton.animate(withDuration: 0.2, animations: { sender.transform = CGAffineTransform.identity })
+        })
+    }
+    
     /*
     // MARK: - Navigation
 
