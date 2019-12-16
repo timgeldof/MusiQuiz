@@ -64,5 +64,4 @@ class DatabaseController {
         
         completion(nil)
     }
-    
 }
