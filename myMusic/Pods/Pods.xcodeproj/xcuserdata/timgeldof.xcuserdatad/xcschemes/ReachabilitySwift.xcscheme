@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "55256AC46FA9C6AB5B1471709CF525BA"
-               BuildableName = "Pods_MusiQuiz.framework"
-               BlueprintName = "Pods-MusiQuiz"
+               BlueprintIdentifier = "0B00B2C167CD783351BD1D00BD5AD1F8"
+               BuildableName = "Reachability.framework"
+               BlueprintName = "ReachabilitySwift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

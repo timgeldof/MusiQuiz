@@ -9,5 +9,6 @@ target 'MusiQuiz' do
   pod 'RealmSwift'
   pod 'Toast-Swift', '~> 5.0.1'
   pod 'SwiftImageEffects'
-  pod 'DynamicBlurView"
+  pod 'DynamicBlurView'
+  pod 'ReachabilitySwift'
 end

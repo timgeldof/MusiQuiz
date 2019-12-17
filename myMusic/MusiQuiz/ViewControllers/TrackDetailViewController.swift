@@ -10,7 +10,8 @@ import UIKit
 import AVFoundation
 import Toast_Swift
 
-class TrackDetailViewController: UIViewController {
+class TrackDetailViewController: UIViewController, ReachabilityObserverDelegate {
+
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var albumImage: UIImageView!
@@ -25,10 +26,14 @@ class TrackDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateUI();
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        try! addReachabilityObserver()
+    }
     func updateUI(){
+
         if let track = track {
             self.albumImage.kf.indicatorType = .activity
             self.albumImage.kf.setImage(with: URL(string: track.album.cover_medium))
@@ -85,6 +90,7 @@ class TrackDetailViewController: UIViewController {
                 playButton.setImage(#imageLiteral(resourceName: "play"), for: UIControl.State.normal)
             }
         }
+        removeReachabilityObserver()
     }
     
     // SOURCE: https://jgreen3d.com/animate-ios-buttons-touch/
@@ -93,6 +99,12 @@ class TrackDetailViewController: UIViewController {
             sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }, completion: { finish in UIButton.animate(withDuration: 0.2, animations: { sender.transform = CGAffineTransform.identity })
         })
+    }
+    
+    func reachabilityChanged(_ isReachable: Bool) {
+        if(!isReachable){
+            self.view.makeToast("No internet available! The song won't be able to play", duration: 2.0, position: .top)
+        } 
     }
     
     /*

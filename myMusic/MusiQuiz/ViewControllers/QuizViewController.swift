@@ -11,7 +11,7 @@ import AVFoundation
 import RealmSwift
 import Toast_Swift
 
-class QuizViewController: UIViewController {
+class QuizViewController: UIViewController, ReachabilityObserverDelegate {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var replayButton: UIButton!
@@ -44,6 +44,7 @@ class QuizViewController: UIViewController {
             setNextTrack()
         }
         addBlurToAlbumCover()
+        try! addReachabilityObserver()
 
     }
     @objc func rotated() {
@@ -90,6 +91,7 @@ class QuizViewController: UIViewController {
         initialAmountOfSongs = 0
         score = 0
         player = nil
+        removeReachabilityObserver()
     }
 
 
@@ -260,6 +262,12 @@ class QuizViewController: UIViewController {
         }, completion: { finish in UIButton.animate(withDuration: 0.2, animations: { sender.transform = CGAffineTransform.identity })
         })
     }
+    func reachabilityChanged(_ isReachable: Bool) {
+         if(!isReachable){
+             self.view.makeToast("No internet available! The song won't be able to play", duration: 2.0, position: .top)
+         }
+     }
+     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SummaryViewController{

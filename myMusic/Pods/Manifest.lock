@@ -3,6 +3,7 @@ PODS:
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
+  - ReachabilitySwift (5.0.0)
   - Realm (4.1.1):
     - Realm/Headers (= 4.1.1)
   - Realm/Headers (4.1.1)
@@ -20,6 +21,7 @@ PODS:
 DEPENDENCIES:
   - DynamicBlurView
   - Kingfisher (~> 5.0)
+  - ReachabilitySwift
   - RealmSwift
   - SwiftImageEffects
   - Toast-Swift (~> 5.0.1)
@@ -28,6 +30,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - DynamicBlurView
     - Kingfisher
+    - ReachabilitySwift
     - Realm
     - RealmSwift
     - SwiftImageEffects
@@ -36,11 +39,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Realm: 25f0a8244cbb1c2271c922963ea8666fc2d8104d
   RealmSwift: 9e2657b33764f80e4a4dffd6d440e24715782052
   SwiftImageEffects: 9d5eafe7fad5e9fab51f1589a337a36368538cac
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 7bcb6229419d0c5cb4ecbee5fa477b80fd2a63bc
+PODFILE CHECKSUM: 157804a37e81193cf6558e215c092178729c043f
 
 COCOAPODS: 1.8.4

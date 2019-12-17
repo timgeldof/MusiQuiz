@@ -81,8 +81,8 @@
             filePath = "MusiQuiz/ViewControllers/TrackDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "setUpPlayer(url:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -91,7 +91,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3647D33D-6F7D-472F-9E4E-CF5953674D76"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../../Downloads/CachingPlayerItem-master/CachingPlayerItem.swift"

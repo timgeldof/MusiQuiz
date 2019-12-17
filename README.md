@@ -14,7 +14,6 @@
 - Add song to a local realm database 
 - Listen to the song from the database or the internet
 - Overview of the downloaded songs
-- Songs that have been added during the session can still play without a valid internet connection because of caching
 - Get a summary of how well you performed in the quiz
 - Supported by iPhone and iPad, landscape and portrait
 
