@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Toast_Swift
 
 class TrackDetailViewController: UIViewController {
     
@@ -69,8 +70,13 @@ class TrackDetailViewController: UIViewController {
     @IBAction func addToFavorites(_ sender: UIButton) {
         animateButton(sender: sender)
         DatabaseController.sharedInstance.insertTrack(track: self.track!.toTrackEntity(), completion: { (error) in
-            print(error?.localizedDescription ?? "Added to favorites")
-            })
+            if(error == nil){
+                self.view.makeToast("Added/Updated song", duration: 2.0, position: .bottom)
+            } else {
+                self.view.makeToast("Failed to add/update song", duration: 2.0, position: .bottom)
+            }
+        })
+
     }
     override func viewWillDisappear(_ animated: Bool) {
         if let player = player {

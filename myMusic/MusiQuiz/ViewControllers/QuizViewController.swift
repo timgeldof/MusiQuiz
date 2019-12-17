@@ -155,13 +155,17 @@ class QuizViewController: UIViewController {
         self.player?.volume = 1
     }
     
-    @IBAction func replayButtonPressed(_ sender: Any) {
+    @IBAction func replayButtonPressed(_ sender: UIButton) {
+        animateButton(sender: sender)
+
         if let player = player {
             player.seek(to: .zero)
         }
     }
     
-    @IBAction func skipButtonPressed(_ sender: Any) {
+    @IBAction func skipButtonPressed(_ sender: UIButton) {
+        animateButton(sender: sender)
+
         resetTextFields()
         self.view.makeToast("Too bad, the song was \(currentTrack!.title) by \(currentTrack!.artist!.name)", duration: 2.0, position: .top)
 
@@ -170,7 +174,9 @@ class QuizViewController: UIViewController {
 
     }
     
-    @IBAction func guesButtonPressed(_ sender: Any) {
+    @IBAction func guesButtonPressed(_ sender: UIButton) {
+        animateButton(sender: sender)
+
         var amountCorrect: Int = 0
         if let currentTrack = currentTrack {
             if(currentTrack.title.lowercased() == self.songTextField.text?.lowercased() ?? ""){

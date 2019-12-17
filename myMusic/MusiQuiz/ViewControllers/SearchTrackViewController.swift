@@ -44,7 +44,7 @@ class SearchTrackViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(self.tracks.count == 0){
-            self.tableView.setEmptyView(title: "No result for search", message:"Songs matching your search will appear here")
+            self.tableView.setEmptyView(title: "No result for search", message:"Songs matching your search will appear here. Check you internet connection if changing the search does nothing.")
         } else {
             tableView.restore()
         }
