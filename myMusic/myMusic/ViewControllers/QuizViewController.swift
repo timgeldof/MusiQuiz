@@ -25,20 +25,47 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    override func viewDidAppear(_ animated: Bool) {
         initializeTrackArray()
         initialAmountOfSongs = tracksArray.count
         setNextTrack()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        tracksArray = []
+        currentTrack = nil
+        initialAmountOfSongs = 0
+        score = 0
+        player = nil
+    }
+    
     func setNextTrack(){
         if let nextTrack = getNewTrack() {
+            self.currentTrack = nextTrack
             updateUI(track: nextTrack)
         } else {
-            print("quiz over")
+            performSegue(withIdentifier: "quizToSummary", sender: self)
         }
     }
+    // SOURCE: https://stackoverflow.com/questions/33504770/remove-blurview-in-swift
+    func addBlurToAlbumCover() {
+        let blur = UIBlurEffect(style: .light)
+        let blurView = UIVisualEffectView(effect: blur)
+        blurView.frame = self.albumImage.bounds
+        for subview in albumImage.subviews {
+            if subview is UIVisualEffectView {
+                subview.removeFromSuperview()
+            }
+        }
+        albumImage.addSubview(blurView)
+    }
+    
     func updateUI(track: TrackEntity){
+        self.albumImage.kf.indicatorType = .activity
         self.albumImage.kf.setImage(with: URL(string: track.album!.cover_medium))
+        addBlurToAlbumCover()
+        playButton.setImage(#imageLiteral(resourceName: "play"), for: UIControl.State.normal)
         setUpPlayer(url: track.preview)
     }
     
@@ -79,11 +106,28 @@ class QuizViewController: UIViewController {
     }
     
     @IBAction func skipButtonPressed(_ sender: Any) {
+        resetTextFields()
         setNextTrack()
     }
     
     @IBAction func guesButtonPressed(_ sender: Any) {
+        if let currentTrack = currentTrack {
+            if(currentTrack.title.lowercased() == self.songTextField.text?.lowercased() ?? ""){
+                self.score += 1
+            }
+            if(currentTrack.artist?.name.lowercased() == self.artistTextField
+                .text?.lowercased() ?? ""){
+                self.score += 1
+            }
+        }
+        resetTextFields()
         setNextTrack()
+    }
+
+    func resetTextFields(){
+        self.songTextField.text = ""
+        self.artistTextField.text = ""
+
     }
     func getNewTrack() -> TrackEntity? {
         guard let track = tracksArray.randomElement() else {
@@ -93,12 +137,11 @@ class QuizViewController: UIViewController {
         return track
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         let tabBarControllerItems = self.tabBarController?.tabBar.items
 
         if let tabArray = tabBarControllerItems {
-            let tabBarItem1 = tabArray[0]
+            let tabBarItem1 = tabArray[1]
             let tabBarItem3 = tabArray[2]
             
             tabBarItem1.isEnabled = false
@@ -109,7 +152,7 @@ class QuizViewController: UIViewController {
         let tabBarControllerItems = self.tabBarController?.tabBar.items
 
         if let tabArray = tabBarControllerItems {
-            let tabBarItem1 = tabArray[0]
+            let tabBarItem1 = tabArray[1]
             let tabBarItem3 = tabArray[2]
             
             tabBarItem1.isEnabled = true
@@ -129,6 +172,7 @@ class QuizViewController: UIViewController {
         }
     }
     // SOURCE: https://jgreen3d.com/animate-ios-buttons-touch/
+    // made small adjustment tho
     func animateButton(sender : UIButton){
         UIButton.animate(withDuration: 0.2, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
@@ -136,15 +180,10 @@ class QuizViewController: UIViewController {
         })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? SummaryViewController{
+            destination.score = self.score
+        }
     }
-    */
 
 }

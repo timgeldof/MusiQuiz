@@ -29,6 +29,7 @@ class TrackDetailViewController: UIViewController {
     }
     func updateUI(){
         if let track = track {
+            self.albumImage.kf.indicatorType = .activity
             self.albumImage.kf.setImage(with: URL(string: track.album.cover_medium))
             self.artistNameLabel.text = track.artist.name
             self.durationLabel.text = track.durationToMinuteString()

@@ -29,6 +29,7 @@
 		C2C539C423A70D5900591C2A /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C539C323A70D5900591C2A /* ViewExtensions.swift */; };
 		C2C539C623A7B12900591C2A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C539C523A7B12900591C2A /* HomeViewController.swift */; };
 		C2C539C823A7BC7600591C2A /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C539C723A7BC7600591C2A /* QuizViewController.swift */; };
+		C2C539CA23A8095600591C2A /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C539C923A8095600591C2A /* SummaryViewController.swift */; };
 		C85A47414160A23EC14C6F25 /* Pods_myMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEB46C4E793781A20FF5D890 /* Pods_myMusic.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		C2C539C323A70D5900591C2A /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		C2C539C523A7B12900591C2A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C2C539C723A7BC7600591C2A /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		C2C539C923A8095600591C2A /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		D747E571371C1489E3AC8ADF /* Pods-myMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myMusic.release.xcconfig"; path = "Target Support Files/Pods-myMusic/Pods-myMusic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +251,7 @@
 				C2B4698A23A59E6800DD4EBE /* FavoriteTracksViewController.swift */,
 				C2C539C523A7B12900591C2A /* HomeViewController.swift */,
 				C2C539C723A7BC7600591C2A /* QuizViewController.swift */,
+				C2C539C923A8095600591C2A /* SummaryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				C214DB8123A6994000138869 /* ArtistDatabase.swift in Sources */,
 				C2C539C423A70D5900591C2A /* ViewExtensions.swift in Sources */,
 				C2B4698D23A5B72B00DD4EBE /* TrackTableViewCell.swift in Sources */,
+				C2C539CA23A8095600591C2A /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

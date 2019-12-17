@@ -33,6 +33,7 @@ class TrackTableViewCell: UITableViewCell {
         self.artistLabel.text = track.artist.name
         self.songTitleLabel.text = track.title
         let downloadURL: URL = URL(string: track.album.cover_small)!
+        self.albumImage.kf.indicatorType = .activity
         self.albumImage.kf.setImage(with: downloadURL)
         self.durationLabel.text = track.durationToMinuteString()
     }
