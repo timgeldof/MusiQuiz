@@ -37,7 +37,7 @@ pod install
 
 After finishing the pod installation,
 
-#####Open the project via the MusiQuiz.xsworkspace file, not the MusiQuiz.xcodeproj file
+###Open the project via the MusiQuiz.xsworkspace file, not the MusiQuiz.xcodeproj file
 
 ## Used resources
 - App Development with Swift 
