@@ -2,9 +2,12 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-target 'myMusic' do
+target 'MusiQuiz' do
   # your other pod
   # ...
   pod 'Kingfisher', '~> 5.0'
   pod 'RealmSwift'
+  pod 'Toast-Swift', '~> 5.0.1'
+  pod 'SwiftImageEffects'
+  pod 'DynamicBlurView"
 end

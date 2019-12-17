@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A6611769-BDAA-407B-BB23-CBD588FB6276"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E967EA1F-5D3A-4E51-9BFD-002FD64B9191"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusiQuiz/Network/NetworkController.swift"
+            timestampString = "598249506.688684"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getTracks(searchQuery:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E967EA1F-5D3A-4E51-9BFD-002FD64B9191 - e426c3f5396661f8"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MusiQuiz.NetworkController.getTracks(searchQuery: Swift.String, completion: (Swift.Optional&lt;MusiQuiz.SearchTrackResponseWrapper&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MusiQuiz"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/timgeldof/Documents/iOSProject/iOSMyMusic/myMusic/MusiQuiz/Network/NetworkController.swift"
+                  timestampString = "598248547.731007"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "868">
+               </Location>
+               <Location
+                  uuid = "E967EA1F-5D3A-4E51-9BFD-002FD64B9191 - 26b479667934f56c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MusiQuiz.NetworkController.getTracks(searchQuery: Swift.String, completion: (Swift.Optional&lt;MusiQuiz.SearchTrackResponseWrapper&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MusiQuiz"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/timgeldof/Documents/iOSProject/iOSMyMusic/myMusic/MusiQuiz/Network/NetworkController.swift"
+                  timestampString = "598248547.733277"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "212">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A17E0193-2EC0-444B-8A0B-4A3EDF6C1353"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusiQuiz/ViewControllers/SearchTrackViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
