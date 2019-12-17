@@ -49,7 +49,7 @@ After finishing the pod installation,
 
 ## Meta
 
-Tim Geldof – [@LinkedIn](https://www.linkedin.com/in/tim-geldof-8a257b131/) – YourEmail@example.com
+Tim Geldof – [@LinkedIn](https://www.linkedin.com/in/tim-geldof-8a257b131/) – tim.geldof@outlook.com
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
