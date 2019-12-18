@@ -11,7 +11,7 @@ import AVFoundation
 import RealmSwift
 import Toast_Swift
 
-class QuizViewController: UIViewController, ReachabilityObserverDelegate {
+class QuizViewController: UIViewController, ReachabilityObserverDelegate, UITextFieldDelegate {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var replayButton: UIButton!
@@ -47,6 +47,20 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate {
         try! addReachabilityObserver()
 
     }
+    
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      if textField == artistTextField {
+         textField.resignFirstResponder()
+         songTextField.becomeFirstResponder()
+      } else if textField == songTextField {
+         songTextField.resignFirstResponder()
+         textField.resignFirstResponder()
+      } 
+     return true
+    }
+
+    
     @objc func rotated() {
         addBlurToAlbumCover()
     }
