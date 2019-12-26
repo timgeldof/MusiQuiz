@@ -107,7 +107,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AF91E83B-B400-4558-A386-DB8420E7318A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../../Downloads/CachingPlayerItem-master/CachingPlayerItem.swift"

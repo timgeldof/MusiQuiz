@@ -21,10 +21,9 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
     @IBOutlet weak var scrollView: UIScrollView!
     
     var player: AVPlayer? = nil
-    var tracksArray : [TrackEntity] = []
-    var currentTrack : TrackEntity? = nil
-    var initialAmountOfSongs = 0
-    var score: Int = 0
+    
+    var quiz: Quiz = Quiz()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +34,19 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
         /* SOURCE:  the keyboard logic consists of a combination of information from the book "App development for swift" and online resources. I changed the code to fit my application.
         */
     }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        initializeTrackArray()
-        initialAmountOfSongs = tracksArray.count
-        if(initialAmountOfSongs==0){
+        quiz.setUp()
+        
+        if(quiz.initialAmountOfSongs == 0){
             navigationController?.popToRootViewController(animated: true)
         } else {
-            setNextTrack()
+            setNextTrackUI()
         }
         addBlurToAlbumCover()
         try! addReachabilityObserver()
@@ -50,20 +55,21 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
     
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-      if textField == artistTextField {
-         textField.resignFirstResponder()
-         songTextField.becomeFirstResponder()
-      } else if textField == songTextField {
-         songTextField.resignFirstResponder()
-         textField.resignFirstResponder()
-      } 
-     return true
+        if textField == artistTextField {
+            textField.resignFirstResponder()
+            songTextField.becomeFirstResponder()
+        } else if textField == songTextField {
+            songTextField.resignFirstResponder()
+            textField.resignFirstResponder()
+        }
+        return true
     }
 
     
     @objc func rotated() {
         addBlurToAlbumCover()
     }
+    
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
@@ -100,20 +106,17 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
     
 
     override func viewDidDisappear(_ animated: Bool) {
-        tracksArray = []
-        currentTrack = nil
-        initialAmountOfSongs = 0
-        score = 0
+        quiz.reset()
         player = nil
         removeReachabilityObserver()
     }
 
 
     
-    func setNextTrack(){
-        if let nextTrack = getNewTrack() {
-            self.currentTrack = nextTrack
-            updateUI(track: nextTrack)
+    func setNextTrackUI(){
+        let songsLeft: Bool = quiz.setNextTrack()
+        if(songsLeft){
+            updateUI(track: quiz.currentTrack!)
         } else {
             performSegue(withIdentifier: "quizToSummary", sender: self)
         }
@@ -183,9 +186,9 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
         animateButton(sender: sender)
 
         resetTextFields()
-        self.view.makeToast("Too bad, the song was \(currentTrack!.title) by \(currentTrack!.artist!.name)", duration: 2.0, position: .top)
+        self.view.makeToast("Too bad, the song was \(quiz.currentTrack!.title) by \(quiz.currentTrack!.artist!.name)", duration: 2.0, position: .top)
 
-        setNextTrack()
+        setNextTrackUI()
         view.endEditing(true)
 
     }
@@ -193,30 +196,19 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
     @IBAction func guesButtonPressed(_ sender: UIButton) {
         animateButton(sender: sender)
 
-        var amountCorrect: Int = 0
-        if let currentTrack = currentTrack {
-            if(currentTrack.title.lowercased() == self.songTextField.text?.lowercased() ?? ""){
-                self.score += 1
-                amountCorrect += 1
-            }
-            if(currentTrack.artist?.name.lowercased() == self.artistTextField
-                .text?.lowercased() ?? ""){
-                self.score += 1
-                amountCorrect += 1
-            }
-        }
+        let amountCorrect = (quiz.makeGuess(songGuess: self.songTextField.text, artistGuess: self.artistTextField.text))
         switch(amountCorrect){
             case 0 :
-                self.view.makeToast("Too bad, the song was \(currentTrack!.title) by \(currentTrack!.artist!.name)", duration: 2.0, position: .top)
+                self.view.makeToast("Too bad, the song was \(quiz.currentTrack!.title) by \(quiz.currentTrack!.artist!.name)", duration: 2.0, position: .top)
             case 1:
-                self.view.makeToast("Almost! The song was \(currentTrack!.title) by \(currentTrack!.artist!.name)", duration: 2.0, position: .top)
+                self.view.makeToast("Almost! The song was \(quiz.currentTrack!.title) by \(quiz.currentTrack!.artist!.name)", duration: 2.0, position: .top)
         case 2:                 self.view.makeToast("You got it, nice job!", duration: 2.0, position: .top)
 
         default: print("It's debug time!")
 
         }
         resetTextFields()
-        setNextTrack()
+        setNextTrackUI()
         view.endEditing(true)
 
     }
@@ -224,14 +216,6 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
     func resetTextFields(){
         self.songTextField.text = ""
         self.artistTextField.text = ""
-
-    }
-    func getNewTrack() -> TrackEntity? {
-        guard let track = tracksArray.randomElement() else {
-            return nil
-        }
-        tracksArray.remove(at: tracksArray.firstIndex(of: track)!)
-        return track
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -257,17 +241,6 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
         }
     }
     
-    func initializeTrackArray() {
-        DatabaseController.sharedInstance.getAll { (tracks) in
-            if let tracks = tracks {
-                for track in tracks {
-                    self.tracksArray.append(track)
-                }
-            } else {
-                print("something went wrong")
-            }
-        }
-    }
     // SOURCE: https://jgreen3d.com/animate-ios-buttons-touch/
     // made small adjustment tho
     func animateButton(sender : UIButton){
@@ -285,9 +258,9 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SummaryViewController{
-            destination.score = self.score
-            destination.maxPossibleScore = initialAmountOfSongs*2
-            let acc : Double = Double(score)/Double(initialAmountOfSongs*2)
+            destination.score = quiz.score
+            destination.maxPossibleScore = quiz.initialAmountOfSongs*2
+            let acc : Double = Double(quiz.score)/Double(quiz.initialAmountOfSongs*2)
             destination.accuracy = acc*Double(100)
         }
     }
