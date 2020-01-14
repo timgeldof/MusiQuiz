@@ -28,6 +28,8 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: nil)
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         registerForKeyboardNotifications()
@@ -63,6 +65,13 @@ class QuizViewController: UIViewController, ReachabilityObserverDelegate, UIText
             textField.resignFirstResponder()
         }
         return true
+    }
+    @objc func playerDidFinishPlaying(){
+        if let player = player {
+            player.seek(to: .zero)
+            playButton.setImage(#imageLiteral(resourceName: "play"), for: UIControl.State.normal)
+            player.pause()
+        }
     }
 
     

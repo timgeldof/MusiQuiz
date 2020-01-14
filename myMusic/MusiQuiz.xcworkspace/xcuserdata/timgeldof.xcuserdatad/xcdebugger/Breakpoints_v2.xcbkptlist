@@ -81,8 +81,8 @@
             filePath = "MusiQuiz/ViewControllers/TrackDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "setUpPlayer(url:)"
             landmarkType = "7">
          </BreakpointContent>

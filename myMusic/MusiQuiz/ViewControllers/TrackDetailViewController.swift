@@ -27,6 +27,13 @@ class TrackDetailViewController: UIViewController, ReachabilityObserverDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI();
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: nil)
+
+    }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,6 +51,15 @@ class TrackDetailViewController: UIViewController, ReachabilityObserverDelegate 
         }
 
     }
+    
+    @objc func playerDidFinishPlaying(){
+        if let player = player {
+            player.seek(to: .zero)
+            playButton.setImage(#imageLiteral(resourceName: "play"), for: UIControl.State.normal)
+            player.pause()
+        }
+    }
+    
     func setUpPlayer(url: String){
         let playerItem = CachingPlayerItem(url: URL(string: url)!)
         self.player = AVPlayer(playerItem: playerItem)
