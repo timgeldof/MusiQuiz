@@ -49,14 +49,22 @@ class Quiz{
         }
     }
     
+    func songGuessMatchesTrack(_ currentTrack: TrackEntity, _ songGuess: String?) -> Bool {
+        return currentTrack.title.lowercased().filter("abcdefghijklmnopqrstuvwxyz ".contains) == songGuess?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).filter("abcdefghijklmnopqrstuvwxyz ".contains) ?? ""
+    }
+    
+    func artistGuessMatchesTrack(_ currentTrack: TrackEntity, _ artistGuess: String?) -> Bool {
+        return currentTrack.artist?.name.lowercased().filter("abcdefghijklmnopqrstuvwxyz ".contains) == artistGuess?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).filter("abcdefghijklmnopqrstuvwxyz ".contains) ?? ""
+    }
+    
     func makeGuess( songGuess: String?, artistGuess: String?) -> Int {
         var amountCorrect: Int = 0
         if let currentTrack = currentTrack {
-            if(currentTrack.title.lowercased() == songGuess?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) ?? ""){
+            if(songGuessMatchesTrack(currentTrack, songGuess)){
                 self.score += 1
                 amountCorrect += 1
             }
-            if(currentTrack.artist?.name.lowercased() == artistGuess?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) ?? ""){
+            if(artistGuessMatchesTrack(currentTrack, artistGuess)){
                 self.score += 1
                 amountCorrect += 1
             }
