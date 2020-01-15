@@ -13,7 +13,7 @@
 		C214DB8123A6994000138869 /* ArtistDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214DB8023A6994000138869 /* ArtistDatabase.swift */; };
 		C214DB8323A6994F00138869 /* AlbumDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214DB8223A6994F00138869 /* AlbumDatabase.swift */; };
 		C25E427623B55FB7009E7043 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E427523B55FB7009E7043 /* Quiz.swift */; };
-		C269503223A88BC0006E08D4 /* CachingPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C269503123A88BC0006E08D4 /* CachingPlayerItem.swift */; };
+		C289C40423CFDA330002876E /* CachingPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289C40323CFDA330002876E /* CachingPlayerItem.swift */; };
 		C28D607023A53AD900005142 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28D606F23A53AD900005142 /* AppDelegate.swift */; };
 		C28D607523A53AD900005142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C28D607323A53AD900005142 /* Main.storyboard */; };
 		C28D607723A53ADA00005142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C28D607623A53ADA00005142 /* Assets.xcassets */; };
@@ -73,7 +73,7 @@
 		C214DB8023A6994000138869 /* ArtistDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDatabase.swift; sourceTree = "<group>"; };
 		C214DB8223A6994F00138869 /* AlbumDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDatabase.swift; sourceTree = "<group>"; };
 		C25E427523B55FB7009E7043 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
-		C269503123A88BC0006E08D4 /* CachingPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CachingPlayerItem.swift; path = "../../../../../../Downloads/CachingPlayerItem-master/CachingPlayerItem.swift"; sourceTree = "<group>"; };
+		C289C40323CFDA330002876E /* CachingPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingPlayerItem.swift; sourceTree = "<group>"; };
 		C28D606C23A53AD900005142 /* MusiQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusiQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C28D606F23A53AD900005142 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C28D607423A53AD900005142 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 		C2C539C223A70D4100591C2A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C269503123A88BC0006E08D4 /* CachingPlayerItem.swift */,
+				C289C40323CFDA330002876E /* CachingPlayerItem.swift */,
 				C2C539C323A70D5900591C2A /* ViewExtensions.swift */,
 			);
 			path = Extensions;
@@ -465,7 +465,6 @@
 				C2B4698B23A59E6800DD4EBE /* FavoriteTracksViewController.swift in Sources */,
 				C2C539C823A7BC7600591C2A /* QuizViewController.swift in Sources */,
 				C25E427623B55FB7009E7043 /* Quiz.swift in Sources */,
-				C269503223A88BC0006E08D4 /* CachingPlayerItem.swift in Sources */,
 				C28D60A723A54DD000005142 /* SearchTrackResponseWrapper.swift in Sources */,
 				C28D60A623A54DCC00005142 /* SearchTrackResponse.swift in Sources */,
 				C2B4698923A59E4600DD4EBE /* TrackDetailViewController.swift in Sources */,
@@ -473,6 +472,7 @@
 				C28D607023A53AD900005142 /* AppDelegate.swift in Sources */,
 				C214DB8323A6994F00138869 /* AlbumDatabase.swift in Sources */,
 				C2B4698723A59E0A00DD4EBE /* SearchTrackViewController.swift in Sources */,
+				C289C40423CFDA330002876E /* CachingPlayerItem.swift in Sources */,
 				C28D60A023A542BA00005142 /* NetworkController.swift in Sources */,
 				C214DB7F23A6988900138869 /* TrackDatabase.swift in Sources */,
 				C28D60AC23A595FA00005142 /* SearchTrackArtistResponse.swift in Sources */,
