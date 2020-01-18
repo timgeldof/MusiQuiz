@@ -1,5 +1,5 @@
 # MusiQuiz
-> Music quiz which lets you compose songs lists from the internet and turn it into a quiz!
+> Music quiz lets you compose lists of songs from the internet and turn it into a quiz!
 
 [![Swift Version][swift-image]][swift-url]
 [![Build Status][travis-image]][travis-url]
